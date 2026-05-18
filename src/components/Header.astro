@@ -1,0 +1,89 @@
+---
+const navItems = [
+  { name: "Forside", href: "/" },
+  { name: "Events", href: "/events" },
+  { name: "Projekter", href: "/projekter" },
+  { name: "Din indsats", href: "/din-indsats" },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-mark">DK</span>
+      <span class="logo-text">DANKORT</span>
+    </a>
+
+    <nav class="main-nav">
+      {navItems.map((item) => (
+        <a href={item.href}>{item.name}</a>
+      ))}
+    </nav>
+
+    <a href="/din-indsats" class="header-btn">Skift til Dankort her</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background-color: var(--cream);
+    padding: 28px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+  }
+
+  .logo-mark {
+    border: 3px solid #d8342a;
+    color: #d8342a;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .logo-text {
+    font-size: 20px;
+    color: var(--text-dark);
+  }
+
+  .main-nav {
+    display: flex;
+    gap: 52px;
+    font-size: 14px;
+  }
+
+  .main-nav a {
+    position: relative;
+  }
+
+  .main-nav a:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--green-dark);
+  }
+
+  .header-btn {
+    background-color: var(--green-dark);
+    color: var(--white);
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+</style>

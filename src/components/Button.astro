@@ -1,0 +1,35 @@
+---
+const { href = "#", variant = "dark" } = Astro.props;
+---
+
+<a href={href} class={`button ${variant}`}>
+  <slot />
+</a>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid var(--green-dark);
+    transition: 0.3s ease;
+  }
+
+  .dark {
+    background-color: var(--green-dark);
+    color: white;
+  }
+
+  .light {
+    background-color: white;
+    color: var(--green-dark);
+  }
+
+  .button:hover {
+    opacity: 0.85;
+  }
+</style>

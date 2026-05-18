@@ -1,0 +1,153 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import EventCard from "../components/EventCard.astro";
+import Newsletter from "../components/Newsletter.astro";
+import "../styles/events.css";
+---
+
+<Layout title="Events">
+  <section class="events-hero container">
+    <div class="events-hero-text">
+      <h1>Mere end bare betaling</h1>
+
+      <p>
+        Oplev events, kaffe, fællesskab og gode øjeblikke rundt i Danmark —
+        samlet ét sted med Dankort.
+      </p>
+
+      <div class="hero-buttons">
+        <Button href="#events-list">Kommende events ↓</Button>
+        <Button href="#" variant="light">Hvad er Dankort Øremærket?</Button>
+      </div>
+    </div>
+
+    <div class="events-hero-image">
+      <img src="/event 1.webp" alt="Dankort event" />
+    </div>
+  </section>
+
+  <section class="container event-filters">
+    <button class="filter-btn active">Alle events</button>
+    <button class="filter-btn">Kaffe & community</button>
+    <button class="filter-btn">Pop-ups</button>
+    <button class="filter-btn">Live events</button>
+    <button class="filter-btn">Workshops</button>
+    <button class="filter-btn">Walk clubs</button>
+  </section>
+
+  <section id="events-list" class="container events-layout">
+    <div class="events-left">
+      <div class="section-heading">
+        <h2>Kommende events</h2>
+        <a href="#">Se kalender</a>
+      </div>
+
+      <EventCard
+        city="København"
+        title="Kaffe & connect"
+        text="Gratis kaffe, god stemning og et lille break fra hverdagen. Kom forbi, connect dit Dankort til Apple Pay og hæng ud med os i solen."
+        date="17. Maj 2026"
+        time="15:00 – 18:00"
+        location="The Coffee Collective, Nørrebro"
+      />
+
+      <EventCard
+        city="Aarhus"
+        title="Pop-up i Latinerkvarteret"
+        text="Kaffe, totebags og små overraskelser midt i byen. Kig forbi vores pop-up og mærk stemningen."
+        date="21. Maj 2026"
+        time="12:00 – 16:00"
+        location="La Cabra, Aarhus"
+      />
+
+      <EventCard
+        city="Odense"
+        title="Sunday Walk Club"
+        text="Tag en ven under armen og join os til en afslappet walk gennem byen og skoven med kaffe og god stemning undervejs."
+        date="25. Maj 2026"
+        time="10:00 – 12:00"
+        location="Munke Mose, Odense"
+      />
+
+      <EventCard
+        city="Aalborg"
+        title="Coffee Stop"
+        text="Gratis kaffe, musik og hyggelig stemning hele eftermiddagen. Et lille pitstop værd."
+        date="1. Juni 2026"
+        time="14:00 – 17:00"
+        location="Café Ulla Terkelsen, Aalborg"
+      />
+
+      <EventCard
+        city="København"
+        title="Landskamp x Dankort x TV 2"
+        text="Storskærm, kolde drikke og sommerstemning i Fælledparken. Se kampen sammen med tusindvis af andre fans."
+        date="15. Juni 2026"
+        time="18:00 – 23:00"
+        location="Fælledparken, København"
+      />
+
+      <button class="load-more">Se flere events ↓</button>
+    </div>
+
+    <aside class="events-right">
+      <div class="featured-event">
+        <img src="/event 1.webp" alt="Fremhævet event" />
+
+        <div class="featured-content">
+          <span>København</span>
+          <h2>DET SKER SNART</h2>
+          <h3>Copenhagen Marathon x Dankort</h3>
+
+          <p>
+            Kom forbi Dankorts område på Kongens Nytorv til kaffe,
+            vand og god stemning.
+          </p>
+
+          <div class="featured-info">
+            <p>10. Maj 2026</p>
+            <p>09:30 – 17:00</p>
+            <p>Kongens Nytorv, København</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-map">
+        <h3>Find events nær dig</h3>
+
+        <div class="map-box">
+          <button class="map-pin pin-aalborg">5 <span>Aalborg</span></button>
+          <button class="map-pin pin-aarhus">8 <span>Aarhus</span></button>
+          <button class="map-pin pin-esbjerg">3 <span>Esbjerg</span></button>
+          <button class="map-pin pin-odense">7 <span>Odense</span></button>
+          <button class="map-pin pin-kbh">11 <span>KBH</span></button>
+        </div>
+
+        <button class="map-btn">Se alle på kortet</button>
+      </div>
+
+      <div class="instagram-box">
+        <h3>Seneste fra Instagram</h3>
+        <p>@mitdankort</p>
+
+        <div class="instagram-grid">
+          <img src="/event 1.webp" alt="Instagram billede" />
+          <img src="/event 1.webp" alt="Instagram billede" />
+          <img src="/event 1.webp" alt="Instagram billede" />
+          <img src="/event 1.webp" alt="Instagram billede" />
+        </div>
+      </div>
+
+      <div class="small-impact-box">
+        <h3>Små valg. Stærkere fællesskab.</h3>
+        <p>
+          Når du betaler med Dankort, er du med til at holde mere værdi i
+          Danmark.
+        </p>
+      </div>
+    </aside>
+  </section>
+
+  <Newsletter />
+</Layout>

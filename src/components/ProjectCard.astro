@@ -1,0 +1,54 @@
+---
+const {
+  image = "/event 1.webp",
+  title,
+  text,
+} = Astro.props;
+---
+
+<article class="project-card">
+  <img src={image} alt={title} />
+
+  <div class="project-content">
+    <h3>{title}</h3>
+    <p>{text}</p>
+    <span>→</span>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background-color: var(--green-dark);
+  }
+
+  .project-card img {
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .project-content {
+    background-color: var(--green-dark);
+    color: white;
+    padding: 18px;
+    position: relative;
+  }
+
+  .project-content h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .project-content p {
+    font-size: 13px;
+  }
+
+  .project-content span {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+  }
+</style>

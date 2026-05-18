@@ -1,0 +1,43 @@
+---
+const { title, text, image, imageAlt = "Hero billede" } = Astro.props;
+---
+
+<section class="hero container">
+  <div class="hero-text">
+    <h1>{title}</h1>
+    <p>{text}</p>
+    <slot />
+  </div>
+
+  <div class="hero-image">
+    <img src={image} alt={imageAlt} />
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 70px 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .hero h1 {
+    font-size: 54px;
+    margin-bottom: 22px;
+  }
+
+  .hero p {
+    font-size: 22px;
+    line-height: 1.25;
+    max-width: 430px;
+    margin-bottom: 32px;
+  }
+
+  .hero-image img {
+    border-radius: 160px 160px 24px 24px;
+    height: 430px;
+    object-fit: cover;
+  }
+</style>

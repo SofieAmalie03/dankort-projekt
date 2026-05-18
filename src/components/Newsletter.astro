@@ -1,0 +1,62 @@
+<section class="newsletter-section">
+  <div class="newsletter-image">
+    <img src="/event 1.webp" alt="Nyhedsbrev" />
+  </div>
+
+  <div class="newsletter-content">
+    <h2>Vil du med næste gang?</h2>
+    <p>Få besked når nye events, pop-ups og oplevelser lander i din by.</p>
+  </div>
+
+  <form class="newsletter-form">
+    <input type="email" placeholder="Din e-mail" />
+    <button type="submit">Tilmeld mig →</button>
+  </form>
+</section>
+
+<style>
+  .newsletter-section {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1.6fr;
+    align-items: center;
+    background-color: var(--green-soft);
+  }
+
+  .newsletter-image img {
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .newsletter-content h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .newsletter-content p {
+    font-size: 14px;
+  }
+
+  .newsletter-form {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 60px;
+  }
+
+  .newsletter-form input {
+    width: 260px;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 999px 0 0 999px;
+  }
+
+  .newsletter-form button {
+    padding: 18px 28px;
+    border: none;
+    background-color: var(--green-dark);
+    color: white;
+    border-radius: 0 999px 999px 0;
+    font-weight: 700;
+    cursor: pointer;
+  }
+</style>

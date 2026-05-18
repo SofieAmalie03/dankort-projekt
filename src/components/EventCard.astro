@@ -1,0 +1,90 @@
+---
+const {
+  image = "/event 1.webp",
+  city,
+  title,
+  text,
+  date,
+  time,
+  location,
+} = Astro.props;
+---
+
+<article class="event-card">
+  <img src={image} alt={title} />
+
+  <div class="event-content">
+    <span>{city}</span>
+    <h3>{title}</h3>
+    <p>{text}</p>
+
+    <div class="event-info">
+      <p>{date}</p>
+      <p>{time}</p>
+      <p>{location}</p>
+    </div>
+  </div>
+
+  <a href="#" class="event-arrow">→</a>
+</article>
+
+<style>
+  .event-card {
+    display: grid;
+    grid-template-columns: 240px 1fr 54px;
+    gap: 22px;
+    align-items: center;
+    background-color: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    min-height: 180px;
+  }
+
+  .event-card img {
+    height: 100%;
+    min-height: 180px;
+    object-fit: cover;
+  }
+
+  .event-content {
+    padding: 18px 0;
+  }
+
+  .event-content span {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .event-content h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .event-content > p {
+    font-size: 14px;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+
+  .event-info p {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .event-arrow {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--green-dark);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    font-size: 22px;
+  }
+</style>
