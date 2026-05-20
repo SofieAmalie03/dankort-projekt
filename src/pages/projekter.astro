@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Hero from "../components/Hero.astro";
+import Button from "../components/Button.astro";
+import "../styles/projekter.css";
+---
+
+<Layout>
+<Hero variant="full" title="Hvor gør vi en forskel?" text="Når du betaler med Dankort, donerer Dankort 1 øre til Den Danske Naturfond. Det bliver til mere end 10 millioner kroner om året til mere vild og varig natur i Danmark.
+" image="/projekter.webp" imageAlt="klitter med havudsigt"> 
+    <Button href="#events-list">Se Projekter ↓</Button>
+</Hero>
+
+<div class="container">
+    <div class="card-project">
+        <ProjectCard image = "/Treldenæs.png"
+        title="Trelde Næs - Fredericia"
+        text="Gammel naturskov med sjældne arter.">
+        </ProjectCard>
+
+        <ProjectCard image = "/Lihmskovbakker.png"
+        title="Lihmskov Bakker"
+        text="Græsmarker bliver til vild natur.">
+        </ProjectCard>
+
+        <ProjectCard image = "/halsmose.png"
+        title="Hals Mose"
+        text="Mose genoprettes med vand, dyreliv og klimaeffekt.">
+        </ProjectCard>
+    </div>
+</div>
+
+</Layout>

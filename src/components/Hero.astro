@@ -1,12 +1,19 @@
 ---
-const { title, text, image, imageAlt = "Hero billede" } = Astro.props;
+const { title, text, image, imageAlt = "Hero billede", variant = "full" } = Astro.props; //to varianter, full eller halv
 ---
+<!-- 
 
-<section class="hero container">
-  <div class="hero-text">
-    <h1>{title}</h1>
-    <p>{text}</p>
-    <slot />
+tilføj "variant" variabel som klasse, så den specifikke variant af hero kan styles. 
+hvis variant "half", sæt "container" på 
+-->
+<section class={`hero hero-${variant} ${variant === 'half' ? 'container' : ''}` }>
+  <div class={`${variant === 'full' ? 'container' : ''}` }> 
+    <div class="hero-text">
+      <h1>{title}</h1>
+      <p>{text}</p>
+      <slot />
+    </div>
+
   </div>
 
   <div class="hero-image">
@@ -39,5 +46,30 @@ const { title, text, image, imageAlt = "Hero billede" } = Astro.props;
     border-radius: 160px 160px 24px 24px;
     height: 430px;
     object-fit: cover;
+  }
+
+  .hero.hero-full {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+  }
+
+  .hero.hero-full .hero-text {
+    max-width: 420px;
+  }
+
+  .hero-full .hero-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .hero-full .hero-image img {
+    border-radius: 0;
+    height: auto;
   }
 </style>
