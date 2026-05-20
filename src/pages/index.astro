@@ -1,9 +1,125 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/forside.css";
 ---
 
 <Layout title="Forside">
-  <section class="container" style="padding: 80px 0;">
-    <h1>Forside virker</h1>
-  </section>
+  <main class="frontpage">
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>DIT KORT<br />GØR EN FORSKEL</h1>
+
+        <p>
+          Når du betaler med Dankort, er du med til at støtte natur og
+          fællesskab og sænke gebyrer i Danmark.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="/indsats" class="btn">Se din impact</a>
+          <a href="/events" class="btn btn-light">Se events</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO CARD -->
+    <section class="intro-card-section">
+      <article class="intro-card">
+        <h2>Hvad er Dankort Øremærket?</h2>
+
+        <p>
+          En del af dine betalinger går til projekter, der støtter dansk natur –
+          uden at det koster dig ekstra.
+        </p>
+
+        <a href="/projekter" class="btn small-btn">Se hvordan det virker</a>
+      </article>
+    </section>
+
+    <!-- VALUES -->
+    <section class="value-section container">
+      <article class="value-item">
+        <div class="icon-circle">⌁</div>
+        <h3>Natur</h3>
+        <p>Vi støtter projekter, der beskytter dansk natur.</p>
+      </article>
+
+      <article class="value-item">
+        <div class="icon-circle">♡</div>
+        <h3>Fællesskab</h3>
+        <p>Vi skaber værdi for lokalsamfund og fremmer stærke fællesskaber.</p>
+      </article>
+
+      <article class="value-item">
+        <div class="icon-circle">⌂</div>
+        <h3>Danmark</h3>
+        <p>Pengene bliver i Danmark og gør en forskel, hvor vi lever.</p>
+      </article>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="impact-section container">
+      <div class="impact-text">
+        <h2>Din betaling<br />har betydning</h2>
+
+        <p>Små valg kan gøre en stor forskel</p>
+
+        <a href="/indsats" class="btn">Se din impact</a>
+      </div>
+
+      <div class="impact-circle">
+        <div class="icon-circle small">⌁</div>
+        <strong>32<span> m²</span></strong>
+        <p>natur beskyttet</p>
+      </div>
+    </section>
+
+    <!-- REASONS -->
+    <section class="reasons-section container">
+      <a href="/projekter" class="section-link">
+        Tre gode grunde til at skifte til Dankort
+      </a>
+
+      <div class="reason-grid">
+        <article class="reason-card reason1">
+          <div class="reason-overlay">
+            <h3>Støtte til lokale fællesskaber</h3>
+            <p>
+              Vi støtter lokale initiativer, der skaber værdi for mennesker og
+              natur.
+            </p>
+            <span>→</span>
+          </div>
+        </article>
+
+        <article class="reason-card reason2">
+          <div class="reason-overlay">
+            <h3>Lavere gebyrer – bedre for danske butikker</h3>
+            <p>
+              Når du betaler med Dankort, betaler butikker lavere
+              transaktionsgebyrer.
+            </p>
+            <span>→</span>
+          </div>
+        </article>
+
+        <article class="reason-card reason3">
+          <div class="reason-overlay">
+            <h3>Betal hurtigt – både fysisk og digitalt</h3>
+            <p>
+              Dankort fungerer med både Apple Pay, online betaling og fysisk
+              kort.
+            </p>
+            <span>→</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="slider-dots">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+  </main>
 </Layout>
