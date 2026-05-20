@@ -22,11 +22,23 @@ const {
     overflow: hidden;
     box-shadow: var(--shadow);
     background-color: var(--green-dark);
+
+    position: relative;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .project-card img {
-    height: 180px;
     object-fit: cover;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
   .project-content {
