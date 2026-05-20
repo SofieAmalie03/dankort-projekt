@@ -3,7 +3,34 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import EventCard from "../components/EventCard.astro";
 import Newsletter from "../components/Newsletter.astro";
+import { getEvents } from "../lib/supabase.js";
 import "../styles/events.css";
+
+type Event = {
+  id: number;
+  city: string;
+  title: string;
+  category: string;
+  category_label: string;
+  text: string;
+  date: string;
+  display_date: string;
+  time: string;
+  location: string;
+  image: string;
+};
+
+const events = (await getEvents()) as Event[];
+
+const today = new Date().toISOString().split("T")[0];
+
+const upcomingEvents = events.filter((event: Event) => event.date >= today);
+
+const featuredEvent = upcomingEvents[0];
+
+const visibleEvents = featuredEvent
+  ? upcomingEvents.filter((event: Event) => event.id !== featuredEvent.id)
+  : upcomingEvents;
 ---
 
 <Layout title="Events">
@@ -27,14 +54,14 @@ import "../styles/events.css";
     </div>
   </section>
 
-  <section class="container event-filters">
-    <button class="filter-btn active">Alle events</button>
-    <button class="filter-btn">Kaffe & community</button>
-    <button class="filter-btn">Pop-ups</button>
-    <button class="filter-btn">Live events</button>
-    <button class="filter-btn">Workshops</button>
-    <button class="filter-btn">Walk clubs</button>
-  </section>
+<section class="container event-filters">
+  <button class="filter-btn active" data-filter="all">Alle events</button>
+  <button class="filter-btn" data-filter="kaffe">Kaffe & community</button>
+  <button class="filter-btn" data-filter="popups">Pop-ups</button>
+  <button class="filter-btn" data-filter="live">Live events</button>
+  <button class="filter-btn" data-filter="workshops">Workshops</button>
+  <button class="filter-btn" data-filter="walkclubs">Walk clubs</button>
+</section>
 
   <section id="events-list" class="container events-layout">
     <div class="events-left">
@@ -43,75 +70,47 @@ import "../styles/events.css";
         <a href="#">Se kalender</a>
       </div>
 
-      <EventCard
-        city="København"
-        title="Kaffe & connect"
-        text="Gratis kaffe, god stemning og et lille break fra hverdagen. Kom forbi, connect dit Dankort til Apple Pay og hæng ud med os i solen."
-        date="17. Maj 2026"
-        time="15:00 – 18:00"
-        location="The Coffee Collective, Nørrebro"
-      />
+      <div class="events-list">
+        {
+          visibleEvents.map((event: Event) => (
+            <div class="event-item" data-category={event.category}>
+              <EventCard
+                city={event.city}
+                title={event.title}
+                text={event.text}
+                date={event.display_date}
+                time={event.time}
+                location={event.location}
+                image={event.image}
+              />
+            </div>
+          ))
+        }
+      </div>
 
-      <EventCard
-        city="Aarhus"
-        title="Pop-up i Latinerkvarteret"
-        text="Kaffe, totebags og små overraskelser midt i byen. Kig forbi vores pop-up og mærk stemningen."
-        date="21. Maj 2026"
-        time="12:00 – 16:00"
-        location="La Cabra, Aarhus"
-      />
-
-      <EventCard
-        city="Odense"
-        title="Sunday Walk Club"
-        text="Tag en ven under armen og join os til en afslappet walk gennem byen og skoven med kaffe og god stemning undervejs."
-        date="25. Maj 2026"
-        time="10:00 – 12:00"
-        location="Munke Mose, Odense"
-      />
-
-      <EventCard
-        city="Aalborg"
-        title="Coffee Stop"
-        text="Gratis kaffe, musik og hyggelig stemning hele eftermiddagen. Et lille pitstop værd."
-        date="1. Juni 2026"
-        time="14:00 – 17:00"
-        location="Café Ulla Terkelsen, Aalborg"
-      />
-
-      <EventCard
-        city="København"
-        title="Landskamp x Dankort x TV 2"
-        text="Storskærm, kolde drikke og sommerstemning i Fælledparken. Se kampen sammen med tusindvis af andre fans."
-        date="15. Juni 2026"
-        time="18:00 – 23:00"
-        location="Fælledparken, København"
-      />
-
-      <button class="load-more">Se flere events ↓</button>
+      <button class="load-more" type="button">Se flere events ↓</button>
     </div>
 
     <aside class="events-right">
-      <div class="featured-event">
-        <img src="/event 1.webp" alt="Fremhævet event" />
+      {featuredEvent && (
+        <div class="featured-event">
+          <img src={featuredEvent.image} alt={featuredEvent.title} />
 
-        <div class="featured-content">
-          <span>København</span>
-          <h2>DET SKER SNART</h2>
-          <h3>Copenhagen Marathon x Dankort</h3>
+          <div class="featured-content">
+            <span>{featuredEvent.city}</span>
+            <h2>DET SKER SNART</h2>
+            <h3>{featuredEvent.title}</h3>
 
-          <p>
-            Kom forbi Dankorts område på Kongens Nytorv til kaffe,
-            vand og god stemning.
-          </p>
+            <p>{featuredEvent.text}</p>
 
-          <div class="featured-info">
-            <p>10. Maj 2026</p>
-            <p>09:30 – 17:00</p>
-            <p>Kongens Nytorv, København</p>
+            <div class="featured-info">
+              <p>{featuredEvent.display_date}</p>
+              <p>{featuredEvent.time}</p>
+              <p>{featuredEvent.location}</p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div class="event-map">
         <h3>Find events nær dig</h3>
@@ -149,5 +148,9 @@ import "../styles/events.css";
     </aside>
   </section>
 
-  <Newsletter />
+    <Newsletter />
+
+  <script>
+    import "../scripts/events.js";
+  </script>
 </Layout>
