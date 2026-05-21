@@ -1,9 +1,48 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/indsats.css";
 ---
 
 <Layout title="Indsats">
+  <!--
   <section class="container" style="padding: 80px 0;">
     <h1>Indsatsside virker</h1>
-  </section>
-</Layout>
+  </section> 
+   -->
+
+<!-- kontooversikt -->
+ <section class="container indsats-hero">
+  <h1>Kontooversigt</h1>
+  <div class="konto-grid">
+
+    <!--kortbilde -->
+    <div class="konto-card-img">
+      <img src="/public/dk-kort 1.webp" alt="Dankort">
+    </div>
+
+    <!--stats-bokser -->
+    <div class="konto-stats">
+      <div class="stat-box">
+        <span class="stat-label">Ditt bidrag - Areal sikret</span>
+        <p class="stat-nummer">24 465</p>
+        <p class="stat-unit">m2</p>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Ditt bidrag</span>
+        <p class="stat-nummer">245</p>
+        <p class="stat-unit">kr i total</p>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">København - Areal sikret</span>
+        <p class="stat-nummer">1 478 930</p>
+        <p class="stat-unit">m2</p>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Per innbygger</span>
+        <p class="stat-nummer">87</p>
+        <p class="stat-unit">m2 / person</p>
+      </div>
+  </div>
+ </section>
+
+ </Layout>
