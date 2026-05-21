@@ -1,0 +1,64 @@
+/*kontooversikt*/
+.indsats-hero {
+  padding: 60px 0 40px;
+}
+
+.indsats-hero h1 {
+  font-size: 42px;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+
+.konto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.konto-card-img img {
+  border-radius: 16px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.konto-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stat-box {
+  border-radius: var(--radius-medium);
+  padding: 24px;
+  background-color: #1a2b41;
+  color: var(--white);
+}
+
+.stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.stat-nummer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: inherit;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-box.dark .stat-nummer {
+  color: var(--white);
+}
+
+.stat-unit {
+  font-size: 13px;
+  opacity: 0.8;
+}
