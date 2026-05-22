@@ -168,3 +168,135 @@
   font-weight: 700;
   color: var(--green-dark);
 }
+
+/* seksjon 3 */
+.indsats-section3 {
+  padding: 40px 0;
+}
+
+.valg-box {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.valg-venstre h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.reward-label {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.reward-tall {
+  font-family: Georgia, serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 20px;
+}
+
+.points-tabell {
+  display: flex;
+  gap: 40px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-bottom: 20px;
+}
+
+.points-kolonne p {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.points-header {
+  font-weight: 700;
+  margin-bottom: 8px !important;
+}
+
+.valg-knapp-wrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.btn-kupong {
+  background-color: var(--green-dark);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: var(--radius-small);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  display: block;
+  margin: 0 auto;
+}
+
+.org-rad {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.org-ikon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.org-rad p {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* POPUP */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-overlay.aktiv {
+  display: flex;
+}
+
+.popup-innhold {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-medium);
+  padding: 24px;
+  max-width: 500px;
+  width: 90%;
+}
+
+.popup-lukk {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup-innhold img {
+  width: 100%;
+  border-radius: var(--radius-small);
+}
