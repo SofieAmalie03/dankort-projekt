@@ -62,3 +62,109 @@
   font-size: 13px;
   opacity: 0.8;
 }
+
+/*seksjon 2*/
+.indsats-section2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 40px 0;
+}
+
+.transaksjoner-box,
+.dinby-box {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  padding: 28px;
+  min-width: 0;
+}
+
+.transaksjoner-box h2,
+.dinby-box h2 {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.transaksjon-rad {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.trans-ikon {
+  font-size: 20px;
+}
+
+.trans-info {
+  flex: 1;
+}
+
+.trans-navn {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.trans-dato {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.trans-belop {
+  font-weight: 700;
+  font-size: 14px;
+  color: #c0392b;
+}
+
+.btn-rapport {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-small);
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.kart-placeholder {
+  position: relative;
+  border-radius: var(--radius-medium);
+  width: 100%;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.kart-placeholder img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-medium);
+}
+
+.dinby-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dinby-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.dinby-nummer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
