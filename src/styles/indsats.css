@@ -300,3 +300,78 @@
   width: 100%;
   border-radius: var(--radius-small);
 }
+
+/* seksjon 4 */
+.indsats-section4 {
+  padding: 40px 0 60px;
+}
+
+.redde-box {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+  padding: 32px;
+}
+
+.redde-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #4a7c59;
+  margin-bottom: 6px;
+}
+
+.redde-undertittel {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-dark);
+}
+
+.redde-innhold {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.redde-bilde {
+  width: 100%;
+  border-radius: var(--radius-medium);
+  object-fit: cover;
+  height: 220px;
+}
+
+.redde-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.redde-stat-rad {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.redde-strek {
+  width: 4px;
+  height: 48px;
+  background-color: #4a7c59;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.redde-tall {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #4a7c59;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.redde-enhet {
+  font-size: 13px;
+  color: var(--text-dark);
+}
