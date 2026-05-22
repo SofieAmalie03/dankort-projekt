@@ -96,5 +96,77 @@ import "../styles/indsats.css";
   </div>
  </section>
 
+ <!-- seksjon 3 Dine valg -->
+<section class="container indsats-section3">
+  <div class="valg-box">
+
+    <!-- Venstre -->
+    <div class="valg-venstre">
+      <h2>Dine valg betaler sig</h2>
+      <p class="reward-label">Reward points</p>
+      <p class="reward-tall">5 000</p>
+      <div class="points-tabell">
+        <div class="points-kolonne">
+          <p class="points-header">Points</p>
+          <p>5 000</p>
+          <p>5 000</p>
+          <p>5 000</p>
+        </div>
+        <div class="points-kolonne">
+          <p class="points-header">Points</p>
+          <p>5 000</p>
+          <p>5 000</p>
+          <p>5 000</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Høyre -->
+    <div class="valg-høyre">
+      <div class="org-rad">
+        <img src="/points1.webp" alt="ikon" class="org-ikon" />
+        <p>Dansk Natur fond</p>
+      </div>
+      <div class="org-rad">
+        <img src="/pionts2.webp" alt="ikon" class="org-ikon" />
+        <p>Dansk Natur fond</p>
+      </div>
+      <div class="org-rad">
+        <img src="/points3.webp" alt="ikon" class="org-ikon" />
+        <p>Dansk Natur fond</p>
+      </div>
+    </div>
+   <div class="valg-knapp-wrapper">
+    <button class="btn-kupong" id="aapneKupong">Scan kupong</button>
+   </div>
+  </div>
+</section>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-innhold">
+    <button class="popup-lukk" id="lukkKupong">✕</button>
+    <img src="/public/popup.webp" alt="Kupong" />
+  </div>
+</div>
  
+<script>
+  const aapneKupong = document.getElementById("aapneKupong");
+  const lukkKupong = document.getElementById("lukkKupong");
+  const popupOverlay = document.getElementById("popupOverlay");
+
+  aapneKupong.addEventListener("click", () => {
+    popupOverlay.classList.add("aktiv");
+  });
+
+  lukkKupong.addEventListener("click", () => {
+    popupOverlay.classList.remove("aktiv");
+  });
+
+  popupOverlay.addEventListener("click", (e) => {
+    if (e.target === popupOverlay) {
+      popupOverlay.classList.remove("aktiv");
+    }
+  });
+</script>
  </Layout>
