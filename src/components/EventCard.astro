@@ -25,7 +25,7 @@ const {
     </div>
   </div>
 
-  <a href="#" class="event-arrow">→</a>
+  <a href="#" class="event-arrow" aria-label="Læs mere om event">→</a>
 </article>
 
 <style>
@@ -43,6 +43,7 @@ const {
   }
 
   .event-card img {
+    width: 100%;
     height: 100%;
     min-height: 180px;
     object-fit: cover;
@@ -50,6 +51,7 @@ const {
 
   .event-content {
     padding: 18px 0;
+    min-width: 0;
   }
 
   .event-content span {
@@ -86,5 +88,112 @@ const {
     justify-content: center;
     margin-right: 18px;
     font-size: 22px;
+    color: var(--green-dark);
+    text-decoration: none;
+  }
+
+  @media (max-width: 700px) {
+    .event-card {
+      grid-template-columns: 116px 1fr 40px;
+      gap: 0;
+      align-items: stretch;
+      min-height: 92px;
+      height: 92px;
+      border-radius: 13px;
+      margin-bottom: 7px;
+      background-color: var(--cream);
+    }
+
+    .event-card img {
+      width: 116px;
+      height: 92px;
+      min-height: 92px;
+      object-fit: cover;
+    }
+
+    .event-content {
+      height: 92px;
+      padding: 7px 7px 6px 9px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .event-content span {
+      font-size: 7px;
+      line-height: 1;
+      margin-bottom: 3px;
+      flex-shrink: 0;
+    }
+
+    .event-content h3 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 0.95;
+      margin-bottom: 4px;
+      color: var(--green-dark);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .event-content > p {
+      font-size: 8.3px;
+      line-height: 1.08;
+      margin-bottom: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .event-info {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 5px;
+      row-gap: 1px;
+    }
+
+    .event-info p {
+      font-size: 6.5px;
+      line-height: 1.1;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .event-info p:last-child {
+      grid-column: 1 / -1;
+    }
+
+    .event-arrow {
+      width: 30px;
+      height: 30px;
+      margin: auto 7px auto 0;
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .event-card {
+      grid-template-columns: 110px 1fr 38px;
+      height: 92px;
+      min-height: 92px;
+    }
+
+    .event-card img {
+      width: 110px;
+      height: 92px;
+      min-height: 92px;
+    }
+
+    .event-content h3 {
+      font-size: 14px;
+    }
   }
 </style>

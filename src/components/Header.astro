@@ -8,29 +8,51 @@ const navItems = [
 ---
 
 <header class="site-header">
-  <div class="container header-inner">
+  <div class="header-inner">
     <a href="/" class="logo">
       <span class="logo-mark">DK</span>
       <span class="logo-text">DANKORT</span>
     </a>
 
-    <nav class="main-nav">
-      {navItems.map((item) => (
-        <a href={item.href}>{item.name}</a>
-      ))}
+    <nav class="desktop-nav">
+      {navItems.map((item) => <a href={item.href}>{item.name}</a>)}
     </nav>
 
-    <a href="/din-indsats" class="header-btn">Skift til Dankort her</a>
+    <a href="/din-indsats" class="desktop-cta">Skift til Dankort her</a>
+
+    <button class="burger-btn" type="button" aria-label="Åbn menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
+
+  <nav class="mobile-menu">
+    {navItems.map((item) => <a href={item.href}>{item.name}</a>)}
+    <a href="/din-indsats" class="mobile-cta">Skift til Dankort her</a>
+  </nav>
 </header>
+
+<script>
+  const burgerBtn = document.querySelector(".burger-btn");
+  const header = document.querySelector(".site-header");
+
+  burgerBtn?.addEventListener("click", () => {
+    header?.classList.toggle("menu-open");
+  });
+</script>
 
 <style>
   .site-header {
     background-color: var(--cream);
-    padding: 28px 0;
+    padding: 28px 5%;
+    position: relative;
+    z-index: 1000;
   }
 
   .header-inner {
+    max-width: var(--container-width);
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,32 +80,138 @@ const navItems = [
     color: var(--text-dark);
   }
 
-  .main-nav {
+  .desktop-nav {
     display: flex;
     gap: 52px;
     font-size: 14px;
   }
 
-  .main-nav a {
-    position: relative;
+  .desktop-nav a {
+    color: var(--text-dark);
+    text-decoration: none;
   }
 
-  .main-nav a:hover::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -7px;
-    width: 100%;
-    height: 2px;
-    background-color: var(--green-dark);
-  }
-
-  .header-btn {
+  .desktop-cta {
     background-color: var(--green-dark);
     color: var(--white);
     padding: 10px 24px;
     border-radius: 4px;
     font-size: 13px;
     font-weight: 700;
+    text-decoration: none;
+  }
+
+  .burger-btn {
+    display: none;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    padding: 0;
+    border: none;
+  }
+
+  .burger-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--green-dark);
+    margin-bottom: 6px;
+    transition: 0.2s ease;
+  }
+
+  .burger-btn span:last-child {
+    margin-bottom: 0;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    .site-header {
+      padding: 18px 20px 8px;
+    }
+
+    .header-inner {
+      width: 100%;
+    }
+
+    .logo {
+      gap: 6px;
+    }
+
+    .logo-mark {
+      border-width: 2px;
+      padding: 2px 7px;
+      font-size: 11px;
+    }
+
+    .logo-text {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .desktop-nav,
+    .desktop-cta {
+      display: none !important;
+    }
+
+    .burger-btn {
+      display: block;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 20px;
+      right: 20px;
+      background-color: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+    }
+
+    .site-header.menu-open .mobile-menu {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--green-dark);
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-cta {
+      margin-top: 10px;
+      background-color: var(--green-dark);
+      color: white !important;
+      text-align: center;
+      border-radius: 999px;
+      padding: 13px 16px !important;
+      border-bottom: none !important;
+    }
+
+    .site-header.menu-open .burger-btn span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .site-header.menu-open .burger-btn span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .site-header.menu-open .burger-btn span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
   }
 </style>

@@ -1,0 +1,219 @@
+---
+type Event = {
+  id: number;
+  city: string;
+  title: string;
+  category?: string;
+  category_label?: string;
+  text?: string;
+  date: string;
+  display_date?: string;
+  time?: string;
+  location?: string;
+  image?: string;
+};
+
+const { events } = Astro.props as {
+  events: Event[];
+};
+
+const cities = [
+  {
+    key: "aalborg",
+    matchNames: ["aalborg", "ålborg"],
+    label: "Aalborg",
+  },
+  {
+    key: "aarhus",
+    matchNames: ["aarhus", "århus"],
+    label: "Aarhus",
+  },
+  {
+    key: "skanderborg",
+    matchNames: ["skanderborg"],
+    label: "Skanderborg",
+  },
+  {
+    key: "odense",
+    matchNames: ["odense"],
+    label: "Odense",
+  },
+  {
+    key: "roskilde",
+    matchNames: ["roskilde"],
+    label: "Roskilde",
+  },
+  {
+    key: "kobenhavn",
+    matchNames: ["københavn", "kobenhavn", "kbh"],
+    label: "København",
+  },
+];
+
+function normalizeCity(city: string) {
+  return city.toLowerCase().trim();
+}
+
+const cityData = cities.map((city) => {
+  const cityEvents = events.filter((event) =>
+    city.matchNames.includes(normalizeCity(event.city))
+  );
+
+  return {
+    ...city,
+    events: cityEvents,
+  };
+});
+---
+
+<section class="event-map" id="eventMapSection">
+  <div class="event-map-header">
+    <div>
+      <h3>Find events nær dig</h3>
+      <p>Se events i dit område og vær med til at støtte naturen</p>
+    </div>
+
+    <button class="map-expand-btn" type="button">Se på kort →</button>
+    <button class="map-close-btn" type="button" aria-label="Luk kort">×</button>
+  </div>
+
+  <div class="event-map-visual">
+    <img
+      class="denmark-map-img"
+      src="/danmark-map-dynamic.svg"
+      alt="Kort over Danmark med events"
+    />
+
+    {
+      cityData.map((city) => (
+        <button
+          class={`event-city-click event-city-click-${city.key}`}
+          type="button"
+          data-city={city.key}
+          aria-label={`Vis kommende events i ${city.label}`}
+        >
+          <span>{city.label}</span>
+        </button>
+      ))
+    }
+
+    <div class="city-popup" id="cityPopup">
+      <button class="popup-close" type="button" aria-label="Luk popup">
+        ×
+      </button>
+
+      <p class="popup-label">Næste events</p>
+      <h4 id="popupCity">København</h4>
+      <div class="popup-events" id="popupEvents"></div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ cityData }}>
+  const mapSection = document.querySelector("#eventMapSection");
+  const mapVisual = mapSection?.querySelector(".event-map-visual");
+  const expandButton = mapSection?.querySelector(".map-expand-btn");
+  const mapCloseButton = mapSection?.querySelector(".map-close-btn");
+
+  const cityButtons = mapSection?.querySelectorAll(".event-city-click") || [];
+  const popup = mapSection?.querySelector("#cityPopup");
+  const popupCity = mapSection?.querySelector("#popupCity");
+  const popupEvents = mapSection?.querySelector("#popupEvents");
+  const closeButton = mapSection?.querySelector(".popup-close");
+
+  function expandMap() {
+    if (window.innerWidth > 700) return;
+    mapSection?.classList.add("is-expanded");
+    document.body.classList.add("map-is-open");
+  }
+
+  function closeMap() {
+    mapSection?.classList.remove("is-expanded");
+    document.body.classList.remove("map-is-open");
+    closeCityPopup();
+  }
+
+  function closeCityPopup() {
+    popup?.classList.remove("is-open");
+    cityButtons.forEach((item) => item.classList.remove("active"));
+  }
+
+  function openCityPopup(button) {
+    const cityKey = button.dataset.city;
+    const city = cityData.find((item) => item.key === cityKey);
+
+    if (!city || !popup || !popupCity || !popupEvents) return;
+
+    popupCity.textContent = city.label;
+
+    if (city.events.length === 0) {
+      popupEvents.innerHTML = `
+        <article class="popup-event">
+          <h5>Ingen kommende events</h5>
+          <p>Hold øje — der kommer snart mere.</p>
+        </article>
+      `;
+    } else {
+      popupEvents.innerHTML = city.events
+        .map(
+          (event) => `
+            <article class="popup-event">
+              <h5>${event.title}</h5>
+              <p>${event.display_date || event.date} · ${
+                event.location || "Lokation kommer snart"
+              }</p>
+            </article>
+          `
+        )
+        .join("");
+    }
+
+    cityButtons.forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    popup.classList.add("is-open");
+  }
+
+  expandButton?.addEventListener("click", expandMap);
+
+  mapVisual?.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    const clickedCity = target.closest(".event-city-click");
+    const clickedPopup = target.closest(".city-popup");
+
+    if (!clickedCity && !clickedPopup) {
+      expandMap();
+    }
+  });
+
+  mapCloseButton?.addEventListener("click", closeMap);
+  closeButton?.addEventListener("click", closeCityPopup);
+
+  cityButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      expandMap();
+      openCityPopup(button);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    const clickedInsideMap = mapSection?.contains(target);
+
+    if (!clickedInsideMap) {
+      closeCityPopup();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMap();
+    }
+  });
+</script>

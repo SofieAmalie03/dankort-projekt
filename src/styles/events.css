@@ -24,9 +24,10 @@
 }
 
 .events-hero-image img {
-  border-radius: 160px 160px 24px 24px;
+  width: 100%;
   height: 430px;
   object-fit: cover;
+  border-radius: 160px 160px 24px 24px;
 }
 
 .event-filters {
@@ -43,6 +44,7 @@
   border-radius: 999px;
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .filter-btn.active {
@@ -55,6 +57,17 @@
   grid-template-columns: 1.4fr 0.9fr;
   gap: 32px;
   padding-top: 20px;
+}
+
+.events-left {
+  min-width: 0;
+}
+
+.events-right {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
 }
 
 .section-heading {
@@ -71,7 +84,8 @@
 
 .section-heading a {
   font-size: 13px;
-  text-decoration: underline;
+  text-decoration: none;
+  font-weight: 700;
 }
 
 .event-card {
@@ -88,6 +102,7 @@
 }
 
 .event-card img {
+  width: 100%;
   height: 100%;
   min-height: 180px;
   object-fit: cover;
@@ -95,6 +110,7 @@
 
 .event-content {
   padding: 18px 0;
+  min-width: 0;
 }
 
 .event-content span {
@@ -131,6 +147,8 @@
   justify-content: center;
   margin-right: 18px;
   font-size: 22px;
+  text-decoration: none;
+  color: var(--green-dark);
 }
 
 .load-more {
@@ -140,13 +158,16 @@
   background-color: var(--white);
   border: 1px solid var(--border);
   font-size: 18px;
+  font-weight: 700;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.events-right {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+.load-more:hover {
+  background-color: var(--green-soft);
+  transform: translateY(-2px);
 }
 
 .featured-event {
@@ -158,54 +179,117 @@
 }
 
 .featured-event img {
+  width: 100%;
   height: 100%;
   min-height: 360px;
   object-fit: cover;
-  filter: brightness(0.65);
+  filter: brightness(0.58);
 }
 
 .featured-content {
   position: absolute;
   inset: 0;
   padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  color: white;
+  z-index: 2;
 }
 
-.featured-content span {
+.featured-label {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  margin: 0;
+  background-color: rgba(248, 233, 230, 0.95);
+  color: var(--green-dark);
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.featured-text-group {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+}
+
+.featured-text-group span {
+  display: block;
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 800;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
 }
 
-.featured-content h2 {
+.featured-text-group h3 {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 32px;
-  margin: 6px 0 12px;
+  font-size: 28px;
+  line-height: 1;
+  margin: 0 0 12px;
 }
 
-.featured-content h3 {
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  margin-bottom: 10px;
+.featured-text {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0 0 14px;
+  max-width: 390px;
 }
 
-.featured-content p,
+.featured-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .featured-info p {
   font-size: 14px;
-  line-height: 1.35;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.featured-arrow {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 28px;
+  text-decoration: none;
 }
 
 .event-map,
-.instagram-box,
-.small-impact-box {
+.instagram-box {
   background-color: var(--cream);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 20px;
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.event-map-header,
+.event-map-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.event-map-header p,
+.event-map-top p {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--text-dark);
 }
 
 .event-map h3,
@@ -216,78 +300,211 @@
   margin-bottom: 14px;
 }
 
-.map-box {
+.event-map h3 {
+  margin: 0 0 18px;
+  color: var(--green-dark);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.map-expand-btn,
+.map-close-btn {
+  display: none;
+}
+
+.event-map-visual {
   position: relative;
-  height: 360px;
-  background-color: #e7ebe0;
-  border-radius: 12px;
-  overflow: hidden;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
-.map-box::before {
-  content: "";
-  position: absolute;
-  inset: 30px;
-  background-color: rgba(255, 255, 255, 0.65);
-  border-radius: 45% 55% 40% 60%;
-}
-
-.map-pin {
-  position: absolute;
-  width: 58px;
-  height: 58px;
-  background-color: #d9433a;
-  color: white;
-  border-radius: 50%;
-  font-weight: 900;
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-}
-
-.map-pin span {
+.denmark-map-img {
+  width: 100%;
   display: block;
-  font-size: 10px;
+}
+
+.event-city-click {
+  position: absolute;
+  z-index: 5;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transform: translate(-50%, -50%) scale(1);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.event-city-click span {
+  opacity: 0;
+  pointer-events: none;
+  color: #fff;
+  font-size: inherit;
+  line-height: 1;
+}
+
+.event-city-click:hover,
+.event-city-click.active {
+  background-color: #b91f25;
+  transform: translate(-50%, -50%) scale(1.14);
+  box-shadow: 0 12px 28px rgba(185, 31, 37, 0.28);
+}
+
+.event-city-click:hover span,
+.event-city-click.active span {
+  opacity: 1;
+}
+
+.event-city-click-aalborg {
+  left: 55%;
+  top: 24%;
+  width: 92px;
+  height: 92px;
+}
+
+.event-city-click-aarhus {
+  left: 56%;
+  top: 47%;
+  width: 92px;
+  height: 92px;
+}
+
+.event-city-click-skanderborg {
+  left: 49%;
+  top: 53%;
+  width: 70px;
+  height: 70px;
+}
+
+.event-city-click-odense {
+  left: 47%;
+  top: 77%;
+  width: 92px;
+  height: 92px;
+}
+
+.event-city-click-roskilde {
+  left: 77%;
+  top: 60%;
+  width: 70px;
+  height: 70px;
+}
+
+.event-city-click-kobenhavn {
+  left: 87%;
+  top: 63%;
+  width: 84px;
+  height: 84px;
+}
+
+.city-popup {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(260px, 92%);
+  background-color: #fffaf0;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  z-index: 10;
+}
+
+.city-popup.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: var(--green-dark);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.popup-label {
+  margin: 0 0 4px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green-dark);
   font-weight: 700;
 }
 
-.pin-aalborg {
-  top: 45px;
-  left: 145px;
+.city-popup h4 {
+  margin: 0 0 12px;
+  color: var(--green-dark);
+  font-size: 1.25rem;
 }
 
-.pin-aarhus {
-  top: 165px;
-  left: 130px;
+.popup-events {
+  display: grid;
+  gap: 10px;
 }
 
-.pin-esbjerg {
-  top: 220px;
-  left: 45px;
+.popup-event {
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
 }
 
-.pin-odense {
-  top: 260px;
-  left: 170px;
+.popup-event h5 {
+  margin: 0 0 4px;
+  color: var(--green-dark);
+  font-size: 0.9rem;
 }
 
-.pin-kbh {
-  top: 230px;
-  right: 45px;
+.popup-event p {
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 0.8rem;
 }
 
-.map-btn {
-  margin-top: 16px;
-  background-color: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-  cursor: pointer;
+.instagram-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.instagram-box p {
+.instagram-heading h3 {
+  margin-bottom: 10px;
+}
+
+.instagram-heading a {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.instagram-name {
+  display: inline-block;
   font-size: 13px;
   margin-bottom: 10px;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.instagram-name:hover {
+  text-decoration: underline;
 }
 
 .instagram-grid {
@@ -296,68 +513,825 @@
   gap: 8px;
 }
 
+.instagram-grid a {
+  display: block;
+}
+
 .instagram-grid img {
+  width: 100%;
   height: 80px;
   object-fit: cover;
   border-radius: 8px;
 }
 
+.instagram-grid a img {
+  transition: transform 0.2s ease;
+}
+
+.instagram-grid a:hover img {
+  transform: scale(1.04);
+}
+
 .small-impact-box {
   background-color: #f8e9e6;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 26px 28px;
+  display: grid;
+  grid-template-columns: 90px 1fr 44px;
+  align-items: center;
+  gap: 22px;
 }
 
-.small-impact-box h3 {
+.small-impact-icon img {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  display: block;
+}
+
+.small-impact-content h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.small-impact-box p {
+.small-impact-content p {
   font-size: 14px;
   line-height: 1.4;
+  margin: 0;
+  max-width: 280px;
+}
+
+.small-impact-arrow {
+  color: var(--green-dark);
+  text-decoration: none;
+  font-size: 34px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .newsletter-section {
   margin-top: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1.4fr 1.6fr;
-  align-items: center;
-  background-color: var(--green-soft);
 }
 
-.newsletter-image img {
-  height: 150px;
-  object-fit: cover;
+@media (max-width: 1000px) {
+  .events-hero {
+    grid-template-columns: 1fr 0.9fr;
+    gap: 32px;
+  }
+
+  .events-hero h1 {
+    font-size: 44px;
+  }
+
+  .events-hero p {
+    font-size: 18px;
+  }
+
+  .events-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .events-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .featured-event,
+  .small-impact-box {
+    grid-column: 1 / -1;
+  }
 }
 
-.newsletter-content h2 {
-  font-size: 24px;
-  margin-bottom: 8px;
+@media (max-width: 700px) {
+  .events-hero {
+    width: 100%;
+    padding: 18px 20px 10px;
+    display: grid;
+    grid-template-columns: 1fr 170px;
+    gap: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .events-hero-text {
+    position: relative;
+    z-index: 2;
+    padding-top: 8px;
+  }
+
+  .events-hero h1 {
+    font-size: 29px;
+    line-height: 0.95;
+    margin-bottom: 10px;
+    max-width: 210px;
+  }
+
+  .events-hero p {
+    font-size: 11px;
+    line-height: 1.22;
+    max-width: 178px;
+    margin-bottom: 13px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 7px;
+    max-width: 178px;
+  }
+
+  .hero-buttons a,
+  .hero-buttons .btn,
+  .hero-buttons .button {
+    width: 100%;
+    min-height: 43px;
+    justify-content: center;
+    padding: 10px 15px;
+    font-size: 12px;
+    line-height: 1.05;
+    border-radius: 5px;
+  }
+
+  .events-hero-image {
+    align-self: end;
+    margin-left: -58px;
+    margin-top: 10px;
+  }
+
+  .events-hero-image img {
+    width: 210px;
+    height: 210px;
+    border-radius: 999px;
+    object-fit: cover;
+  }
+
+  .event-filters {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    padding: 7px 20px 9px;
+    border-top: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .event-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    padding: 9px 15px;
+    font-size: 10px;
+    border-radius: 999px;
+  }
+
+  .filter-extra {
+    display: none;
+  }
+
+  .events-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 0 20px;
+  }
+
+  .events-right {
+    display: contents;
+  }
+
+  .featured-event {
+    order: 1;
+  }
+
+  .events-left {
+    order: 2;
+  }
+
+  .event-map {
+    order: 3;
+  }
+
+  .small-impact-box {
+    order: 4;
+  }
+
+  .instagram-box {
+    order: 5;
+  }
+
+  .featured-event {
+    min-height: 170px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .featured-event img {
+    min-height: 170px;
+    height: 170px;
+    filter: brightness(0.6);
+  }
+
+  .featured-content {
+    padding: 9px 12px;
+  }
+
+  .featured-label {
+    position: static;
+    display: block;
+    background-color: transparent;
+    color: white;
+    padding: 0;
+    border-radius: 0;
+    font-size: 18px;
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    margin: 0 0 8px;
+    text-align: center;
+  }
+
+  .featured-text-group {
+    left: 12px;
+    right: 58px;
+    bottom: 11px;
+  }
+
+  .featured-text-group span {
+    font-size: 8px;
+    margin-bottom: 3px;
+  }
+
+  .featured-text-group h3 {
+    font-size: 18px;
+    line-height: 0.95;
+    margin-bottom: 5px;
+  }
+
+  .featured-text {
+    font-size: 10px;
+    line-height: 1.13;
+    max-width: 260px;
+    margin-bottom: 6px;
+  }
+
+  .featured-info {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    max-width: 270px;
+  }
+
+  .featured-info p {
+    font-size: 7.5px;
+    line-height: 1.2;
+  }
+
+  .featured-arrow {
+    right: 12px;
+    bottom: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+  }
+
+  .section-heading {
+    margin: 8px 0 5px;
+  }
+
+  .section-heading h2 {
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+  }
+
+  .section-heading a {
+    font-size: 9px;
+  }
+
+  .events-list {
+    display: grid;
+    gap: 7px;
+  }
+
+  .event-item {
+    overflow: visible;
+  }
+
+  .event-card {
+    grid-template-columns: 112px 1fr 38px;
+    gap: 0;
+    align-items: stretch;
+    min-height: 92px;
+    height: 92px;
+    border-radius: 13px;
+    margin-bottom: 0;
+    background-color: var(--cream);
+    overflow: hidden;
+  }
+
+  .event-card img {
+    width: 112px;
+    min-height: 92px;
+    height: 92px;
+    object-fit: cover;
+  }
+
+  .event-content {
+    height: 92px;
+    padding: 7px 7px 6px 9px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .event-content span {
+    font-size: 7px;
+    line-height: 1;
+    margin-bottom: 3px;
+    flex-shrink: 0;
+  }
+
+  .event-content h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 0.95;
+    margin-bottom: 4px;
+    color: var(--green-dark);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .event-content > p {
+    font-size: 8.3px;
+    line-height: 1.08;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .event-info {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+    row-gap: 1px;
+  }
+
+  .event-info p {
+    font-size: 6.5px;
+    line-height: 1.1;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .event-info p:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .event-arrow {
+    width: 30px;
+    height: 30px;
+    margin: auto 7px auto 0;
+    font-size: 18px;
+  }
+
+  .load-more {
+    padding: 11px;
+    font-size: 12px;
+    border-radius: 12px;
+    margin-top: 7px;
+  }
+
+  .event-map {
+    position: relative;
+    padding: 10px 12px 12px;
+    border-radius: 14px;
+    background-color: var(--cream);
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(23, 63, 45, 0.08);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .event-map:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(23, 63, 45, 0.14);
+  }
+
+  .event-map-header,
+  .event-map-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .event-map h3 {
+    font-size: 10px;
+    margin: 0;
+    color: var(--green-dark);
+  }
+
+  .event-map h3::after {
+    content: none;
+  }
+
+  .event-map-header p,
+  .event-map-top p {
+    display: block;
+    margin-top: 3px;
+    font-size: 7.5px;
+    line-height: 1.25;
+    color: var(--text-dark);
+  }
+
+  .map-expand-btn {
+    display: block;
+    flex-shrink: 0;
+    background-color: white;
+    border: 1px solid var(--border);
+    color: var(--green-dark);
+    font-size: 8px;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(23, 63, 45, 0.08);
+  }
+
+  .map-close-btn {
+    display: none;
+  }
+
+  .event-map:not(.is-expanded) .event-map-visual {
+    max-height: 145px;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  .event-map:not(.is-expanded) .city-popup {
+    display: none;
+  }
+
+  .event-map:not(.is-expanded)::after {
+    content: "Tryk for at åbne kortet";
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    background-color: var(--green-dark);
+    color: white;
+    font-size: 8px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 999px;
+    pointer-events: none;
+    box-shadow: 0 6px 16px rgba(23, 63, 45, 0.2);
+  }
+
+  .denmark-map-img {
+    width: 100%;
+    margin-top: -10px;
+  }
+
+  .event-city-click-aalborg {
+    width: 54px;
+    height: 54px;
+  }
+
+  .event-city-click-aarhus {
+    width: 54px;
+    height: 54px;
+  }
+
+  .event-city-click-skanderborg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .event-city-click-odense {
+    width: 52px;
+    height: 52px;
+  }
+
+  .event-city-click-roskilde {
+    width: 40px;
+    height: 40px;
+  }
+
+  .event-city-click-kobenhavn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .event-city-click span {
+    font-size: 8px;
+  }
+
+  body.map-is-open {
+    overflow: hidden;
+  }
+
+  .event-map.is-expanded {
+    position: fixed;
+    inset: 14px;
+    z-index: 9999;
+    background-color: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 16px;
+    overflow: auto;
+    cursor: default;
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+  }
+
+  .event-map.is-expanded::after {
+    content: none;
+  }
+
+  .event-map.is-expanded:hover {
+    transform: none;
+  }
+
+  .event-map.is-expanded .event-map-header,
+  .event-map.is-expanded .event-map-top {
+    margin-bottom: 12px;
+  }
+
+  .event-map.is-expanded .event-map-header h3,
+  .event-map.is-expanded .event-map-top h3 {
+    font-size: 17px;
+  }
+
+  .event-map.is-expanded .event-map-header p,
+  .event-map.is-expanded .event-map-top p {
+    font-size: 11px;
+  }
+
+  .event-map.is-expanded .map-expand-btn {
+    display: none;
+  }
+
+  .event-map.is-expanded .map-close-btn {
+    display: flex;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--green-dark);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .event-map.is-expanded .event-map-visual {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .event-map.is-expanded .denmark-map-img {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .event-map.is-expanded .event-city-click-aalborg {
+    width: 82px;
+    height: 82px;
+  }
+
+  .event-map.is-expanded .event-city-click-aarhus {
+    width: 82px;
+    height: 82px;
+  }
+
+  .event-map.is-expanded .event-city-click-skanderborg {
+    width: 62px;
+    height: 62px;
+  }
+
+  .event-map.is-expanded .event-city-click-odense {
+    width: 78px;
+    height: 78px;
+  }
+
+  .event-map.is-expanded .event-city-click-roskilde {
+    width: 60px;
+    height: 60px;
+  }
+
+  .event-map.is-expanded .event-city-click-kobenhavn {
+    width: 72px;
+    height: 72px;
+  }
+
+  .event-map.is-expanded .event-city-click span {
+    font-size: 11px;
+  }
+
+  .city-popup {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    transform: none;
+  }
+
+  .city-popup:not(.is-open) {
+    display: none;
+  }
+
+  .event-map.is-expanded .city-popup {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: min(260px, 92%);
+    margin-top: 0;
+    background-color: #fffaf0;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+    transform: translateY(12px);
+  }
+
+  .event-map.is-expanded .city-popup.is-open {
+    display: block;
+    transform: translateY(0);
+  }
+
+  .small-impact-box {
+    grid-template-columns: 52px 1fr 30px;
+    gap: 11px;
+    padding: 12px 13px;
+    border-radius: 14px;
+  }
+
+  .small-impact-icon img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .small-impact-content h3 {
+    font-size: 12px;
+    line-height: 1.05;
+    margin-bottom: 4px;
+  }
+
+  .small-impact-content p {
+    font-size: 8.5px;
+    line-height: 1.28;
+  }
+
+  .small-impact-arrow {
+    font-size: 25px;
+  }
+
+  .instagram-box {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .instagram-heading {
+    margin-bottom: 4px;
+  }
+
+  .instagram-heading h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    margin: 0;
+    color: var(--green-dark);
+  }
+
+  .instagram-heading a {
+    font-size: 8px;
+  }
+
+  .instagram-name {
+    display: none;
+  }
+
+  .instagram-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+
+  .instagram-grid img {
+    height: 87px;
+    border-radius: 0;
+  }
 }
 
-.newsletter-content p {
-  font-size: 14px;
+@media (max-width: 430px) {
+  .events-hero {
+    grid-template-columns: 1fr 160px;
+  }
+
+  .events-hero h1 {
+    font-size: 28px;
+  }
+
+  .events-hero-image {
+    margin-left: -67px;
+  }
+
+  .events-hero-image img {
+    width: 205px;
+    height: 205px;
+  }
+
+  .hero-buttons {
+    max-width: 170px;
+  }
+
+  .hero-buttons a,
+  .hero-buttons .btn,
+  .hero-buttons .button {
+    min-height: 43px;
+    font-size: 12px;
+  }
+
+  .event-card {
+    grid-template-columns: 106px 1fr 36px;
+  }
+
+  .event-card img {
+    width: 106px;
+  }
+
+  .event-content h3 {
+    font-size: 14px;
+  }
+
+  .event-content > p {
+    font-size: 8px;
+  }
+
+  .instagram-grid img {
+    height: 82px;
+  }
 }
 
-.newsletter-form {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 60px;
-}
+@media (max-width: 370px) {
+  .events-hero {
+    grid-template-columns: 1fr;
+  }
 
-.newsletter-form input {
-  width: 260px;
-  padding: 18px 20px;
-  border: none;
-  border-radius: 999px 0 0 999px;
-}
+  .events-hero-image {
+    display: none;
+  }
 
-.newsletter-form button {
-  padding: 18px 28px;
-  border: none;
-  background-color: var(--green-dark);
-  color: white;
-  border-radius: 0 999px 999px 0;
-  font-weight: 700;
-  cursor: pointer;
+  .hero-buttons {
+    max-width: 100%;
+  }
+
+  .event-card {
+    grid-template-columns: 92px 1fr 34px;
+  }
+
+  .event-card img {
+    width: 92px;
+  }
+
+  .event-content h3 {
+    font-size: 13px;
+  }
+
+  .event-content > p {
+    display: none;
+  }
+
+  .event-info p {
+    font-size: 6.4px;
+  }
+
+  .instagram-grid img {
+    height: 72px;
+  }
+
+  .small-impact-box {
+    grid-template-columns: 42px 1fr 26px;
+    gap: 8px;
+  }
+
+  .small-impact-icon img {
+    width: 40px;
+    height: 40px;
+  }
 }
