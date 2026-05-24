@@ -11,6 +11,7 @@
   --cream: #f7f3eb;
   --white: #ffffff;
   --text-dark: #10291f;
+  --text: #10291f;
   --border: #d8d1c5;
   --footer-green: #98a69a;
 
@@ -83,4 +84,15 @@ button {
 .btn-light {
   background-color: var(--white);
   color: var(--green-dark);
+}
+
+@media (max-width: 700px) {
+  body {
+    min-width: 320px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+  }
 }

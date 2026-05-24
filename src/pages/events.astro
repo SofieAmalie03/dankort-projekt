@@ -4,6 +4,7 @@ import Button from "../components/Button.astro";
 import EventCard from "../components/EventCard.astro";
 import Newsletter from "../components/Newsletter.astro";
 import { getEvents } from "../lib/supabase.js";
+import EventMap from "../components/EventMap.astro";
 import "../styles/events.css";
 
 type Event = {
@@ -44,30 +45,30 @@ const visibleEvents = featuredEvent
       </p>
 
       <div class="hero-buttons">
-        <Button href="#events-list">Kommende events ↓</Button>
-        <Button href="#" variant="light">Hvad er Dankort Øremærket?</Button>
+        <Button href="#events-list">Kommende events →</Button>
+       <Button href="/projekter" variant="light">Hvad er Dankort Øremærket?</Button>
       </div>
     </div>
 
     <div class="events-hero-image">
-      <img src="/event 1.webp" alt="Dankort event" />
+      <img src="/eventhero.webp" alt="Dankort event" />
     </div>
   </section>
 
-<section class="container event-filters">
-  <button class="filter-btn active" data-filter="all">Alle events</button>
-  <button class="filter-btn" data-filter="kaffe">Kaffe & community</button>
-  <button class="filter-btn" data-filter="popups">Pop-ups</button>
-  <button class="filter-btn" data-filter="live">Live events</button>
-  <button class="filter-btn" data-filter="workshops">Workshops</button>
-  <button class="filter-btn" data-filter="walkclubs">Walk clubs</button>
-</section>
+  <section class="container event-filters">
+    <button class="filter-btn active" data-filter="all">Alle events</button>
+    <button class="filter-btn" data-filter="kaffe">Sortér efter</button>
+    <button class="filter-btn filter-extra" data-filter="popups">Pop-ups</button>
+    <button class="filter-btn filter-extra" data-filter="live">Live events</button>
+    <button class="filter-btn filter-extra" data-filter="workshops">Workshops</button>
+    <button class="filter-btn filter-extra" data-filter="walkclubs">Walk clubs</button>
+  </section>
 
   <section id="events-list" class="container events-layout">
     <div class="events-left">
       <div class="section-heading">
         <h2>Kommende events</h2>
-        <a href="#">Se kalender</a>
+        <a href="#">Se kalender →</a>
       </div>
 
       <div class="events-list">
@@ -92,63 +93,115 @@ const visibleEvents = featuredEvent
     </div>
 
     <aside class="events-right">
-      {featuredEvent && (
-        <div class="featured-event">
-          <img src={featuredEvent.image} alt={featuredEvent.title} />
+      {
+        featuredEvent && (
+          <div class="featured-event">
+            <img src={featuredEvent.image} alt={featuredEvent.title} />
 
-          <div class="featured-content">
-            <span>{featuredEvent.city}</span>
-            <h2>DET SKER SNART</h2>
-            <h3>{featuredEvent.title}</h3>
+            <div class="featured-content">
+              <p class="featured-label">DET SKER SNART</p>
 
-            <p>{featuredEvent.text}</p>
+              <div class="featured-text-group">
+                <span>{featuredEvent.city}</span>
+                <h3>{featuredEvent.title}</h3>
 
-            <div class="featured-info">
-              <p>{featuredEvent.display_date}</p>
-              <p>{featuredEvent.time}</p>
-              <p>{featuredEvent.location}</p>
+                <p class="featured-text">{featuredEvent.text}</p>
+
+                <div class="featured-info">
+                  <p>{featuredEvent.display_date}</p>
+                  <p>{featuredEvent.time}</p>
+                  <p>{featuredEvent.location}</p>
+                </div>
+              </div>
+
+              <a href="#" class="featured-arrow" aria-label="Læs mere om event">
+                →
+              </a>
             </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
-      <div class="event-map">
-        <h3>Find events nær dig</h3>
+      <EventMap events={upcomingEvents} />
 
-        <div class="map-box">
-          <button class="map-pin pin-aalborg">5 <span>Aalborg</span></button>
-          <button class="map-pin pin-aarhus">8 <span>Aarhus</span></button>
-          <button class="map-pin pin-esbjerg">3 <span>Esbjerg</span></button>
-          <button class="map-pin pin-odense">7 <span>Odense</span></button>
-          <button class="map-pin pin-kbh">11 <span>KBH</span></button>
+      <div class="small-impact-box">
+        <div class="small-impact-icon">
+          <img src="/treeicon.webp" alt="Ikon af træ" />
         </div>
 
-        <button class="map-btn">Se alle på kortet</button>
+        <div class="small-impact-content">
+          <h3>Små valg. Stærkere fællesskab.</h3>
+          <p>
+            Når du betaler med Dankort, er du med til at holde mere værdi i
+            Danmark — helt uden ekstra besvær.
+          </p>
+        </div>
+
+        <a href="#" class="small-impact-arrow" aria-label="Læs mere">
+          →
+        </a>
       </div>
 
       <div class="instagram-box">
-        <h3>Seneste fra Instagram</h3>
-        <p>@mitdankort</p>
+        <div class="instagram-heading">
+          <h3>Seneste fra Instagram</h3>
+
+          <a
+            href="https://www.instagram.com/mmdoremerket/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Se mere →
+          </a>
+        </div>
+
+        <a
+          href="https://www.instagram.com/mmdoremerket/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="instagram-name"
+        >
+          @mmdoremerket
+        </a>
 
         <div class="instagram-grid">
-          <img src="/event 1.webp" alt="Instagram billede" />
-          <img src="/event 1.webp" alt="Instagram billede" />
-          <img src="/event 1.webp" alt="Instagram billede" />
-          <img src="/event 1.webp" alt="Instagram billede" />
-        </div>
-      </div>
+          <a
+            href="https://www.instagram.com/mmdoremerket/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/event 1.webp" alt="Instagram billede" />
+          </a>
 
-      <div class="small-impact-box">
-        <h3>Små valg. Stærkere fællesskab.</h3>
-        <p>
-          Når du betaler med Dankort, er du med til at holde mere værdi i
-          Danmark.
-        </p>
+          <a
+            href="https://www.instagram.com/mmdoremerket/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/event 1.webp" alt="Instagram billede" />
+          </a>
+
+          <a
+            href="https://www.instagram.com/mmdoremerket/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/event 1.webp" alt="Instagram billede" />
+          </a>
+
+          <a
+            href="https://www.instagram.com/mmdoremerket/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/event 1.webp" alt="Instagram billede" />
+          </a>
+        </div>
       </div>
     </aside>
   </section>
 
-    <Newsletter />
+  <Newsletter />
 
   <script>
     import "../scripts/events.js";

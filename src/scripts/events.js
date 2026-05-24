@@ -3,39 +3,44 @@ const eventItems = document.querySelectorAll(".event-item");
 const loadMoreButton = document.querySelector(".load-more");
 
 let activeFilter = "all";
-let visibleLimit = 5;
+let expanded = false;
+const startLimit = 5;
 
-function updateEvents() {
-  let visibleCount = 0;
-  let totalMatchingEvents = 0;
-
-  eventItems.forEach((eventItem) => {
-    if (!(eventItem instanceof HTMLElement)) return;
+function getMatchingEvents() {
+  return Array.from(eventItems).filter((eventItem) => {
+    if (!(eventItem instanceof HTMLElement)) return false;
 
     const eventCategory = eventItem.dataset.category;
 
-    const matchesFilter =
-      activeFilter === "all" || activeFilter === eventCategory;
+    return activeFilter === "all" || activeFilter === eventCategory;
+  });
+}
 
-    if (matchesFilter) {
-      totalMatchingEvents++;
+function updateEvents() {
+  const matchingEvents = getMatchingEvents();
 
-      if (visibleCount < visibleLimit) {
-        eventItem.style.display = "block";
-        visibleCount++;
-      } else {
-        eventItem.style.display = "none";
-      }
-    } else {
+  eventItems.forEach((eventItem) => {
+    if (eventItem instanceof HTMLElement) {
       eventItem.style.display = "none";
     }
   });
 
-  if (loadMoreButton instanceof HTMLElement) {
-    if (totalMatchingEvents <= visibleLimit) {
+  matchingEvents.forEach((eventItem, index) => {
+    if (!(eventItem instanceof HTMLElement)) return;
+
+    if (expanded || index < startLimit) {
+      eventItem.style.display = "block";
+    }
+  });
+
+  if (loadMoreButton instanceof HTMLButtonElement) {
+    if (matchingEvents.length <= startLimit) {
       loadMoreButton.style.display = "none";
     } else {
       loadMoreButton.style.display = "block";
+      loadMoreButton.textContent = expanded
+        ? "Se færre events ↑"
+        : "Se flere events ↓";
     }
   }
 }
@@ -45,7 +50,7 @@ filterButtons.forEach((button) => {
 
   button.addEventListener("click", () => {
     activeFilter = button.dataset.filter || "all";
-    visibleLimit = 5;
+    expanded = false;
 
     filterButtons.forEach((btn) => btn.classList.remove("active"));
     button.classList.add("active");
@@ -56,7 +61,7 @@ filterButtons.forEach((button) => {
 
 if (loadMoreButton instanceof HTMLButtonElement) {
   loadMoreButton.addEventListener("click", () => {
-    visibleLimit += 5;
+    expanded = !expanded;
     updateEvents();
   });
 }

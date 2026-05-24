@@ -38,11 +38,16 @@ import { Instagram, Facebook } from "lucide-astro";
       <h4>Følg med</h4>
 
       <div class="socials">
-        <a href="#">
+        <a
+          href="https://www.instagram.com/mmdoremerket/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Besøg os på Instagram"
+        >
           <Instagram size={18} />
         </a>
 
-        <a href="#">
+        <a href="#" aria-label="Besøg os på Facebook">
           <Facebook size={18} />
         </a>
       </div>
@@ -77,17 +82,19 @@ import { Instagram, Facebook } from "lucide-astro";
     display: grid;
     grid-template-columns: 2fr 1fr 1.2fr 1fr 1fr;
     gap: 40px;
-    padding: 48px 0;
+    padding: 48px 0 64px;
     border-top: 1px solid var(--border);
   }
 
   .footer-brand h3 {
     font-size: 24px;
     margin-bottom: 12px;
+    color: var(--green-dark);
   }
 
   .footer-brand p {
     font-size: 14px;
+    color: var(--text);
   }
 
   .footer-column {
@@ -108,6 +115,12 @@ import { Instagram, Facebook } from "lucide-astro";
   .footer-column p {
     font-size: 14px;
     line-height: 1.5;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .footer-column a:hover {
+    text-decoration: underline;
   }
 
   .socials {
@@ -136,7 +149,6 @@ import { Instagram, Facebook } from "lucide-astro";
   .footer-bottom {
     background-color: var(--footer-green);
     padding: 18px 0;
-    margin-top: 24px;
   }
 
   .bottom-inner {
@@ -150,5 +162,97 @@ import { Instagram, Facebook } from "lucide-astro";
   .footer-links {
     display: flex;
     gap: 32px;
+  }
+
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  .bottom-inner span {
+    color: white;
+    font-size: 13px;
+  }
+
+  @media (max-width: 700px) {
+    .site-footer {
+      margin-top: 0;
+    }
+
+    .footer-top {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      padding: 13px 20px 14px;
+      border-top: 1px solid var(--border);
+      background-color: var(--cream);
+    }
+
+    .footer-brand h3 {
+      font-size: 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-bottom: 3px;
+    }
+
+    .footer-brand p {
+      font-size: 6px;
+      line-height: 1.25;
+    }
+
+    .footer-column {
+      gap: 3px;
+      border-left: 1px solid var(--border);
+      padding-left: 8px;
+    }
+
+    .footer-column h4 {
+      font-size: 6.5px;
+      margin-bottom: 2px;
+    }
+
+    .footer-column a,
+    .footer-column p {
+      font-size: 5.7px;
+      line-height: 1.35;
+    }
+
+    .socials {
+      gap: 4px;
+      margin-bottom: 3px;
+    }
+
+    .socials a {
+      width: 13px;
+      height: 13px;
+    }
+
+    .socials svg {
+      width: 8px;
+      height: 8px;
+    }
+
+    .footer-bottom {
+      padding: 7px 20px;
+    }
+
+    .bottom-inner {
+      width: 100%;
+      font-size: 6px;
+    }
+
+    .footer-links {
+      gap: 17px;
+    }
+
+    .footer-links a,
+    .bottom-inner span {
+      font-size: 6px;
+    }
   }
 </style>
