@@ -23,22 +23,23 @@ hvis variant "half", sæt "container" på
 
 <style>
   .hero {
-    padding: 70px 0 40px;
+    padding: 30px 0 15px;
     display: grid;
     grid-template-columns: 1fr 1.1fr;
     align-items: center;
     gap: 60px;
+
   }
 
   .hero h1 {
-    font-size: 54px;
-    margin-bottom: 22px;
+    font-size: 30px;
+    margin-bottom: 20px;
   }
 
   .hero p {
-    font-size: 22px;
+    font-size: 16px;
     line-height: 1.25;
-    max-width: 430px;
+    max-width: 310px;
     margin-bottom: 32px;
   }
 
@@ -52,7 +53,7 @@ hvis variant "half", sæt "container" på
     display: block;
     position: relative;
     overflow: hidden;
-    min-height: 600px;
+    
   }
 
   .hero.hero-full .hero-text {
@@ -72,4 +73,35 @@ hvis variant "half", sæt "container" på
     border-radius: 0;
     height: auto;
   }
+
+  @media screen and (min-width: 800px) {
+  .hero {
+      padding: 70px 0 70px;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
+} 
+
+@media screen and (min-width: 1024px) {
+  
+   .hero h1 {
+    font-size: 54px;
+    margin-bottom: 22px;
+  }
+
+    .hero p {
+    font-size: 22px;
+    line-height: 1.25;
+    max-width: 430px;
+    margin-bottom: 32px;
+  }
+
+  .hero.hero-full {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+  }
+}
 </style>

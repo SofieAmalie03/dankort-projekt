@@ -1,0 +1,52 @@
+---
+const { image, title, text } = Astro.props;
+---
+
+<article class="donations-card">
+  <div>
+    <img src={image} alt={title} />
+  </div>
+
+  <div class="donations-info">
+    <div class="donations-title-wrapper">
+      <h3>{title}</h3>
+    </div>
+
+    <div class="donations-text-wrapper">
+      <p>{text}</p>
+    </div>
+  </div>
+</article>
+
+<style>
+  .donations-card {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 22px;
+    align-items: center;
+    background-color: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+
+  .donations-card img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    padding: 12px;
+  }
+
+  .donations-info {
+    display:flex;
+    flex-direction: column;
+    gap:18px;
+    margin: 12px 12px 12px 0;
+  }
+  .donations-text-wrapper{
+    width:100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+</style>

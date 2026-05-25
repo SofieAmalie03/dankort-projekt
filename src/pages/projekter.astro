@@ -4,31 +4,111 @@ import ProjectCard from "../components/ProjectCard.astro";
 import Hero from "../components/Hero.astro";
 import Button from "../components/Button.astro";
 import "../styles/projekter.css";
+import DonationCard from "../components/DonationCard.astro";
 ---
 
 <Layout>
-<Hero variant="full" title="Hvor gør vi en forskel?" text="Når du betaler med Dankort, donerer Dankort 1 øre til Den Danske Naturfond. Det bliver til mere end 10 millioner kroner om året til mere vild og varig natur i Danmark.
-" image="/projekter.webp" imageAlt="klitter med havudsigt"> 
+  <Hero
+    variant="full"
+    title="Hvor gør vi en forskel?"
+    text="Når du betaler med Dankort, donerer Dankort 1 øre til Den Danske Naturfond. Det bliver til mere end 10 millioner kroner om året til mere vild og varig natur i Danmark.
+"
+    image="/projekter.webp"
+    imageAlt="klitter med havudsigt"
+  >
     <Button href="#events-list">Se Projekter ↓</Button>
-</Hero>
+  </Hero>
 
-<div class="container">
-    <div class="card-project">
-        <ProjectCard image = "/Treldenæs.png"
-        title="Trelde Næs - Fredericia"
-        text="Gammel naturskov med sjældne arter.">
-        </ProjectCard>
+  <div class="container">
+    <div class="donationsområder-section">
+      <div class="donationsområder-title-wrapper">
+        <h2>Donationsområder i hele Danmark</h2>
+      </div>
 
-        <ProjectCard image = "/Lihmskovbakker.png"
-        title="Lihmskov Bakker"
-        text="Græsmarker bliver til vild natur.">
-        </ProjectCard>
+      <div class="donationsområder">
+        <div>
+          <DonationCard
+            image="/treldenæs-grønnestrand.svg"
+            title="Trelde Næs - Fredericia"
+            text="166.666 m2"
+          />
 
-        <ProjectCard image = "/halsmose.png"
-        title="Hals Mose"
-        text="Mose genoprettes med vand, dyreliv og klimaeffekt.">
-        </ProjectCard>
+          <DonationCard
+            image="/hesbjergskov.svg"
+            title="Hesbjerg Skov - Fyn"
+            text="83.000 m2"
+          />
+
+          <DonationCard
+            image="/venø.svg"
+            title="Venø - Limfjorden"
+            text="83.000 m2"
+          />
+
+          <DonationCard
+            image="/storebæltklint.svg"
+            title="Storebælt Klint - Korsør"
+            text="167.000 m2"
+          />
+
+          <DonationCard
+            image="/bornholm.svg"
+            title="Randkløve Skår - Bornholm"
+            text="83.000 m2"
+          />
+
+          <DonationCard
+            image="/halsmose.svg"
+            title="Hals Mose - Nordjylland"
+            text="83.000 m2"
+          />
+
+          <DonationCard
+            image="/lihmskovbakker.svg"
+            title="Lihmskov Bakker - Vejle Ådal"
+            text="167.000 m2"
+          />
+
+          <DonationCard
+            image="/treldenæs-grønnestrand.svg"
+            title="Grønnestrand - Jammerbugt"
+            text="83.000 m2"
+          />
+        </div>
+
+        <div class="danmarkskort-wrapper">
+          <img src="danmarkskort.webp" alt="Donationsområder i DK" />
+        </div>
+      </div>
     </div>
-</div>
 
+<h2>Udvalgte områder</h2>
+  <div class="card-project">
+    <ProjectCard
+      image="/Treldenæs.png"
+      title="Trelde Næs - Fredericia"
+      text="Gammel naturskov med sjældne arter."
+    />
+
+    <ProjectCard
+      image="/Lihmskovbakker.png"
+      title="Lihmskov Bakker"
+      text="Græsmarker bliver til vild natur."
+    />
+
+    <ProjectCard
+      image="/halsmose.png"
+      title="Hals Mose"
+      text="Mose genoprettes med vand, dyreliv og klimaeffekt."
+    />
+  </div>
+
+  <div class="støtte-container">
+    <img src="lihmskovbakker.svg" alt="billede af blad">
+    <div>
+    <h2>Din støtte gør en forskel overalt i Danmark</h2>
+    <p>Sammen skaber vi en grønnere fremtid for kommende generationer</p>
+  </div>
+</div>
+  </div>
 </Layout>
