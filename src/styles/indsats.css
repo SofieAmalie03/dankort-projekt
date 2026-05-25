@@ -377,6 +377,11 @@
 
 /*mobil*/
 @media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
   .konto-grid {
     grid-template-columns: 1fr;
   }
@@ -399,6 +404,7 @@
 
   .redde-innhold {
     grid-template-columns: 1fr;
+    margin-bottom: 16px;
   }
 
   .indsats-hero h1 {
