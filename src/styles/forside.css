@@ -194,6 +194,7 @@
 
 .section-link {
   display: inline-block;
+  margin-top: 60px;
   margin-bottom: 70px;
   text-decoration: underline;
   font-size: 16px;
