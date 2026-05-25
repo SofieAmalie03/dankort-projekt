@@ -151,9 +151,17 @@ import "../styles/indsats.css";
     <p class="redde-label">Du er med til at redde</p>
     <p class="redde-undertittel">Dele af dansk natur</p>
     <div class="redde-innhold">
-      <video class="redde-bilde" autoplay muted loop playsinline>
-        <source src="/video.mp4" type="video/mp4" />
-      </video>
+<video
+  class="redde-bilde"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="metadata"
+>
+  <source src="/video.mp4" type="video/mp4" />
+</video>
+
       <div class="redde-stats">
         <div class="redde-stat-rad">
           <div class="redde-strek"></div>
