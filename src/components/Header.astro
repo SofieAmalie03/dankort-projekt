@@ -9,10 +9,10 @@ const navItems = [
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="logo">
-      <span class="logo-mark">DK</span>
-      <span class="logo-text">DANKORT</span>
-    </a>
+<a href="/" class="logo">
+  <img class="logo-mark-img" src="/dankortlogo.webp" alt="Dankort logo" />
+  <span class="logo-text">DANKORT</span>
+</a>
 
     <nav class="desktop-nav">
       {navItems.map((item) => <a href={item.href}>{item.name}</a>)}
@@ -126,11 +126,21 @@ const navItems = [
   .mobile-menu {
     display: none;
   }
+  .logo-mark-img {
+  width: 36px;
+  height: auto;
+  display: block;
+}
 
   @media (max-width: 700px) {
     .site-header {
       padding: 18px 20px 8px;
     }
+    @media (max-width: 700px) {
+  .logo-mark-img {
+    width: 25px;
+  }
+}
 
     .header-inner {
       width: 100%;
