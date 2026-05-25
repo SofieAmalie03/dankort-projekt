@@ -75,6 +75,37 @@
   color: #1e3d2f;
 }
 
+/* tablet */
+@media screen and (min-width: 800px) {
+  .card-project {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .donationsområder {
+    padding: 24px;
+  }
+
+  .donationsområder-title-wrapper {
+    padding: 24px;
+  }
+
+  .støtte-container {
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding: 24px;
+    font-size: 18px;
+  }
+
+  .støtte-container h2 {
+    font-size: 20px;
+  }
+
+  .støtte-container img {
+    width: 60px;
+  }
+}
+
 /* computer */
 @media screen and (min-width: 1024px) {
   .card-project {
@@ -117,36 +148,5 @@
   .støtte-container h2 {
     margin-top: 8px;
     color: #1e3d2f;
-  }
-}
-
-/* tablet */
-@media screen and (min-width: 800px) {
-  .card-project {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-  }
-
-  .donationsområder {
-    padding: 24px;
-  }
-
-  .donationsområder-title-wrapper {
-    padding: 24px;
-  }
-
-  .støtte-container {
-    grid-template-columns: 60px 1fr;
-    gap: 24px;
-    padding: 24px;
-    font-size: 18px;
-  }
-
-  .støtte-container h2 {
-    font-size: 20px;
-  }
-
-  .støtte-container img {
-    width: 60px;
   }
 }
