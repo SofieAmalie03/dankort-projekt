@@ -94,5 +94,6 @@ button {
   .container {
     width: 100%;
     max-width: none;
+    padding: 20px;
   }
 }
