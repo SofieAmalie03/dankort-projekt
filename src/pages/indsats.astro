@@ -4,11 +4,6 @@ import "../styles/indsats.css";
 ---
 
 <Layout title="Indsats">
-  <!--
-  <section class="container" style="padding: 80px 0;">
-    <h1>Indsatsside virker</h1>
-  </section> 
-   -->
 
 <!-- første seksjon kontooversikt -->
  <section class="container indsats-hero">
@@ -23,12 +18,12 @@ import "../styles/indsats.css";
     <!--stats-bokser -->
     <div class="konto-stats">
       <div class="stat-box">
-        <span class="stat-label">Ditt bidrag - Areal sikret</span>
+        <span class="stat-label">Dit bidrag - Areal sikret</span>
         <p class="stat-nummer">24 465</p>
         <p class="stat-unit">m2</p>
       </div>
       <div class="stat-box">
-        <span class="stat-label">Ditt bidrag</span>
+        <span class="stat-label">Dit bidrag</span>
         <p class="stat-nummer">245</p>
         <p class="stat-unit">kr i total</p>
       </div>
@@ -38,7 +33,7 @@ import "../styles/indsats.css";
         <p class="stat-unit">m2</p>
       </div>
       <div class="stat-box">
-        <span class="stat-label">Per innbygger</span>
+        <span class="stat-label">Per indbygger</span>
         <p class="stat-nummer">87</p>
         <p class="stat-unit">m2 / person</p>
       </div>
@@ -49,7 +44,7 @@ import "../styles/indsats.css";
  <!--andre seksjon transaksjoner og kart -->
  <section class="container indsats-section2">
   <div class="transaksjoner-box">
-    <h2>Sidste tranaksjoner</h2>
+    <h2>Sidste transaktioner</h2>
     <div class="transaksjon-rad">
     <span class="trans-ikon">💳</span>
     <div class="trans-info">
@@ -59,7 +54,7 @@ import "../styles/indsats.css";
     <p class="trans-belop">-330kr</p>
     </div>
     <div class="transaksjon-rad">
-      <span class="trans-ikon">🔄</span>
+      <span class="trans-ikon">💳</span>
       <div class="trans-info">
         <p class="trans-navn">Dankort</p>
         <p class="trans-navn">29 jan</p>
@@ -74,7 +69,7 @@ import "../styles/indsats.css";
       </div>
       <p class="trans-belop">-115kr</p>
     </div>
-    <button class="btn-rapport">📊 Se den detaljert rapport</button>
+    <button class="btn-rapport">📊 Se den detaljeret rapport</button>
   </div>
 
   <!--din by -->
@@ -89,18 +84,18 @@ import "../styles/indsats.css";
         <p class="dinby-nummer">1 478 930 m2</p>
       </div>
       <div>
-        <p class="dinby-label">Per innbygger</p>
+        <p class="dinby-label">Per indbygger</p>
         <p class="dinby-nummer">87 m2</p>
       </div>
     </div>
   </div>
  </section>
 
- <!-- seksjon 3 Dine valg -->
+ <!-- seksjon 3 dine valg -->
 <section class="container indsats-section3">
   <div class="valg-box">
 
-    <!-- Venstre -->
+    <!-- venstre -->
     <div class="valg-venstre">
       <h2>Dine valg betaler sig</h2>
       <p class="reward-label">Reward points</p>
@@ -108,32 +103,32 @@ import "../styles/indsats.css";
       <div class="points-tabell">
         <div class="points-kolonne">
           <p class="points-header">Points</p>
-          <p>5 000</p>
-          <p>5 000</p>
-          <p>5 000</p>
+          <p>200</p>
+          <p>150</p>
+          <p>50</p>
         </div>
         <div class="points-kolonne">
           <p class="points-header">Points</p>
-          <p>5 000</p>
-          <p>5 000</p>
-          <p>5 000</p>
+          <p>5</p>
+          <p>500</p>
+          <p>1000</p>
         </div>
       </div>
     </div>
 
-    <!-- Høyre -->
+    <!-- høyre -->
     <div class="valg-høyre">
       <div class="org-rad">
-        <img src="/points1.webp" alt="ikon" class="org-ikon" />
-        <p>Dansk Natur fond</p>
+        <img src="/dn1.webp" alt="ikon" class="org-ikon" />
+        <p>Lagkagehuset</p>
       </div>
       <div class="org-rad">
-        <img src="/pionts2.webp" alt="ikon" class="org-ikon" />
-        <p>Dansk Natur fond</p>
+        <img src="/dn2.webp" alt="ikon" class="org-ikon" />
+        <p>Hart</p>
       </div>
       <div class="org-rad">
-        <img src="/points3.webp" alt="ikon" class="org-ikon" />
-        <p>Dansk Natur fond</p>
+        <img src="/dn3.webp" alt="ikon" class="org-ikon" />
+        <p>Magasin</p>
       </div>
     </div>
    <div class="valg-knapp-wrapper">
@@ -146,9 +141,45 @@ import "../styles/indsats.css";
 <div class="popup-overlay" id="popupOverlay">
   <div class="popup-innhold">
     <button class="popup-lukk" id="lukkKupong">✕</button>
-    <img src="/public/popup.webp" alt="Kupong" />
+    <img src="/kupong.webp" alt="Kupong" />
   </div>
 </div>
+
+<!-- seksjons fire -->
+<section class="container indsats-section4">
+  <div class="redde-box">
+    <p class="redde-label">Du er med til at redde</p>
+    <p class="redde-undertittel">Dele af dansk natur</p>
+    <div class="redde-innhold">
+      <video class="redde-bilde" autoplay muted loop playsinline>
+        <source src="/video.mp4" type="video/mp4" />
+      </video>
+      <div class="redde-stats">
+        <div class="redde-stat-rad">
+          <div class="redde-strek"></div>
+          <div>
+            <p class="redde-tall">83.000</p>
+            <p class="redde-enhet">m2 sikret areal</p>
+          </div>
+        </div>
+        <div class="redde-stat-rad">
+          <div class="redde-strek"></div>
+          <div>
+            <p class="redde-tall">4</p>
+            <p class="redde-enhet">aktive projekter</p>
+          </div>
+        </div>
+        <div class="redde-stat-rad">
+          <div class="redde-strek"></div>
+          <div>
+            <p class="redde-tall">12</p>
+            <p class="redde-enhet">bidrag i år</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
  
 <script>
   const aapneKupong = document.getElementById("aapneKupong");
