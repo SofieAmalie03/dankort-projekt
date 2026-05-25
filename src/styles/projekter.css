@@ -55,6 +55,8 @@
   background: #ede8e0;
   padding: 18px;
   border-radius: 14px;
+  margin-bottom: 40px;
+  font-size: 12px;
 }
 
 .støtte-container img {
@@ -65,7 +67,7 @@
 .støtte-container h2 {
   margin: 0 0 6px 0;
   color: #1e3d2f;
-  font-size: 1.2rem;
+  font-size: 14px;
 }
 
 .støtte-container p {
@@ -137,6 +139,11 @@
     grid-template-columns: 60px 1fr;
     gap: 24px;
     padding: 24px;
+    font-size: 18px;
+  }
+
+  .støtte-container h2 {
+    font-size: 20px;
   }
 
   .støtte-container img {
