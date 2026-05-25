@@ -1,4 +1,9 @@
 /* mobile first version under */
+
+.hero-image img {
+  min-height: 300px;
+}
+
 .card-project {
   display: grid;
   grid-template-columns: 1fr;
