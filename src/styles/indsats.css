@@ -380,7 +380,7 @@
   .container {
     width: 90%;
     padding: 0 16px;
-    margin-bottom: 16px;
+    margin-bottom: 16px !important;
   }
   .konto-grid {
     grid-template-columns: 1fr;
