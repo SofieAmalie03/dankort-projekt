@@ -1,43 +1,54 @@
-# Astro Starter Kit: Minimal
+# Dankort Øremærket
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Dette projekt er udviklet som en del af vores 2. semester eksamensprojekt på Multimediedesign.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Projektet tager udgangspunkt i Dankort Øremærket og undersøger, hvordan initiativet kan gøres mere synligt, relevant og motiverende for en yngre målgruppe. Websitet fungerer som en digital løsning, der samler information, events og interaktivt content for at skabe større forståelse for, hvordan betaling med Dankort kan støtte lokale fællesskaber.
 
-## 🚀 Project Structure
+## Projektbeskrivelse
 
-Inside of your Astro project, you'll see the following folders and files:
+Formålet med websitet er at gøre Dankort Øremærket mere nærværende og forståeligt for målgruppen. Løsningen kombinerer et informativt univers med en eventbaseret tilgang, hvor brugeren kan opdage relevante arrangementer og få en tydeligere kobling mellem betaling, fællesskab og lokal støtte.
+
+Websitet indeholder blandt andet en forside, en eventside, et interaktivt Danmarkskort og content, der skal understøtte brugerens motivation for at vælge Dankort.
+
+## Teknologier
+
+Projektet er udviklet med:
+
+- Astro
+- HTML
+- CSS
+- JavaScript
+- Supabase
+- Netlify
+
+## Funktioner
+
+Websitet indeholder følgende funktioner:
+
+- Responsivt design
+- Dynamisk eventside
+- Interaktivt Danmarkskort
+- Filtrering af events
+- Eventdata hentet fra Supabase
+- Genanvendelige komponenter
+- Call-to-action elementer
+- Content med fokus på synlighed, fællesskab og motivation
+
+## Projektstruktur
+
+Den overordnede projektstruktur består af:
 
 ```text
 /
 ├── public/
+│   ├── images/
+│   ├── videos/
+│   └── robots.txt
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/
+│   ├── layouts/
+│   ├── pages/
+│   └── styles/
+├── package.json
+└── README.md
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
